@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tac tac toe</title>
+</head>
+<body>
+    <script>
+        const getuserInput = userInput => {
+            userInput = userInput.toLowerCase();
+            if (userInput==='rock' || userInput==='paper'
+            || userInput==='scissors'){
+                return userInput
+            } else {
+                console.log('that was not a valid input');
+            }
+        };
+        function getComputerChoice(){
+            opts = ['paper', 'rock', 'scissors'];
+            index = Math.floor(Math.random()*3);
+            return opts[index];
+        }
+
+        function determineWinner(userChoice, computerChoice){
+            optsdict = {paper:1, rock:2, scissors: 4};
+            sum = optsdict[userChoice] + optsdict[computerChoice];
+
+            switch (sum){
+                case 3:
+                    console.log(userChoice==='paper'?'user won!':'CPU won!');
+                    break;
+                case 5:
+                    console.log(userChoice==='scissors'?'user won!':'CPU won!');
+                    break;
+                case 6:
+                    console.log(userChoice==='rock'?'user won!':'CPU won!');
+                    break;
+                default:
+                    console.log('DRAW!');
+            }
+        };
+    </script>
+</body>
+</html>
