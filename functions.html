@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>functions</title>
+</head>
+<body>
+    <script>
+        // function declaration:
+        function foo() {
+            // block code
+            return; // this function returns undefined
+            // if return is omitted (or if a return value is not specified)
+            // the function returns undefined
+        }
+
+
+
+        // function expression
+        const moo = function zoo(){
+            // block code
+            console.log("a random sentence");
+            // same rules for 'return'
+        }
+        // you can omit the function name in function expressions
+        const zar = function(){} 
+
+
+
+        // arrow functions (fat arrows)
+        const tee = (param1, param2, paramN) => {
+            return `these are your values: ${param1} ${param2} ${paramN}`;
+        }
+        // you can omit the curly braces for single-line blocks:
+        const pop = (param1, param2, paramN) => console.log("a random sentence");
+        // you can omit the 'return' keyword for single-line blocks (omit curly braces too to work):
+        const yes = (param1, param2, paramN) => "your value";
+        // you can omit the parenthesis if there's ONLY ONE parameter, ONLY FOR ONE:
+        const mom = param1 => {console.log("a random sentence")};
+        // 2 or more parameters OR 0 parameters require parenthesis:
+        const dee = () => {console.log("a random sentence")};
+
+
+        // Practice
+        const canIVote = age => age>=18;
+        //console.log(canIVote(19)); // Should print true
+
+        const agreeOrDisagree = (opinion1, opinion2) =>
+            opinion1 === opinion2? 'You agree!': 'You disagree!';
+        //console.log(agreeOrDisagree("yep", "yep")) // Should print 'You agree!'
+
+        function lifePhase(age) {
+            /*
+            if (level<0 || level>140)
+                return 'This is not a valid age';
+            else if (level<=3)
+                return 'baby';
+            else if (level<=12)
+                return 'child';
+            else if (level<=19)
+                return 'teen';
+            else if (level<=64)
+                return 'adult';
+            else if (level<=140)
+                return 'senior citizen';
+            */
+            switch (true) {
+                case age<0 || age>140: return 'This is not a valid age';
+                case age < 3: return 'baby';
+                case age < 13: return 'child';
+                case age < 20: return 'teen';
+                case age < 65: return 'adult';
+                case age < 75: return 'senior';
+                case age < 141: return 'elderly';
+                // in this specific example I am not using break since return automatically exits the function
+            }
+        }
+        //console.log(lifePhase(5)) //should print 'child'
+
+        const finalGrade = (num1, num2, num3) => {
+            average = Math.floor((num1+num2+num3)/3);
+            switch(true){
+                case num1<0 || num1>100:
+                case num2<0 || num2>100:
+                case num3<0 || num3>100:
+                return 'You have entered an invalid grade.';
+                case average<=59:
+                return 'F';
+                case average<=69:
+                return 'D';
+                case average<=79:
+                return 'C';
+                case average<=89:
+                return 'B';
+                case average<=100:
+                return 'A';
+            }
+        }
+        // Uncomment the line below when you're ready to try out your function
+        // console.log(finalGrade(89, 89, 89)) // Should print 'B'
+
+
+        function reportingForDuty(rank, lastName) {
+            return `${rank} ${lastName} reporting for duty!`;
+        }
+        // Uncomment the line below when you're ready to try out your function
+        // console.log(reportingForDuty('Private', 'Fido')) // Should return 'Private Fido reporting for duty!'
+
+        
+        const rollTheDice = () => {
+            let die1 = Math.floor(Math.random() * 6 + 1);
+            let die2 = Math.floor(Math.random() * 6 + 1);
+            return die1 + die2;
+        }
+        // console.log(rollTheDice());
+
+
+
+        function calculateWeight(earthWeight, planet) {
+            planets = {
+                Mercury: 0.378,
+                Venus: 0.907,
+                Mars: 0.377,
+                Jupiter: 2.36,
+                Saturn: 0.916
+            }
+            return planets[planet]*earthWeight || 'Invalid Planet Entry. Try: Mercury, Venus, Mars, Jupiter, or Saturn.'
+        }
+        // Uncomment the line below when you're ready to try out your function
+        console.log(calculateWeight(100, 'Jupiter')) // Should print 236
+
+
+
+
+        const truthyOrFalsy = value => value? true: false;
+        // Uncomment the line below when you're ready to try out your function
+        console.log(truthyOrFalsy("")) // Should print false
+
+
+        function numImaginaryFriends(friends) {
+            return Math.ceil(friends*0.25);
+        }
+        // Uncomment the lines below when you're ready to try out your function
+        console.log(numImaginaryFriends(20)) // Should print 5
+        console.log(numImaginaryFriends(10)) // Should print 3 (2.5 rounded up!)
+
+    </script>
+</body>
+</html>
