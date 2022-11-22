@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>event handler</title>
+    <style>
+      div {
+        display: none;
+      }
+      button {
+        cursor: pointer;
+      }
+      h1 {
+        font-size: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>event handlers</h1>
+    <button id="show-info">SHOW INFO</button>
+    <button id="hide-info">HIDE INFO</button>
+    <button id="remove-show">remove ability to show</button>
+    <div id="info">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, ab
+      accusamus. Iure praesentium fugiat veritatis rerum nobis aliquam quia
+      fugit, asperiores sapiente ab aspernatur dolorum necessitatibus illum
+      dicta alias eligendi.
+    </div>
+    <script>
+      const info = document.getElementById("info");
+
+      // Using .onevent property:
+      document.getElementById("hide-info").onclick = () => {
+        if (info.style.display === "none") alert("already hidden");
+        else info.style.display = "none";
+      };
+
+      // We can use addEventListener instead of .onclick
+      function showElement() {
+        if (info.style.display === "block") alert("already shown");
+        else info.style.display = "block";
+      }
+      const showInfo = document.getElementById("show-info");
+      showInfo.addEventListener("click", showElement); // it is a best practice to create a function
+      // using .addEventListener allows us to add multiple function handlers if we want:
+      function changeText() {
+        showInfo.innerHTML = "show info again!";
+      }
+      showInfo.addEventListener("click", changeText); // it is a best practice to create a function
+
+      // remove listeners:
+      const removeShow = document.getElementById("remove-show");
+      function removeAbilityToShow(event) {
+        event.target.innerHTML = "cannot show again"
+        showInfo.removeEventListener("click", showElement);
+        alert('button "' + showInfo.innerHTML + '" cannot show info now');
+      }
+      removeShow.addEventListener("click", removeAbilityToShow);
+
+      /*
+        the handler function can receive an event parameter:
+
+        function removeAbilityToShow(event) {...}
+        removeShow.addEventListener('click', removeAbilityToShow);
+
+        - the .target property to reference the element that the event is registered to.
+        - the .type property to access the name of the event.
+        - the .timeStamp property to access the number of milliseconds that passed
+            since the document loaded and the event was triggered.
+
+        */
+    </script>
+  </body>
+</html>
